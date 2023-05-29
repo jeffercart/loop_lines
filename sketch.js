@@ -13,7 +13,7 @@ function setup() {
   osc.start();
   osc.amp(env);
   son.setVolume(0.5);
-  son.loop();
+
 }
 
 function draw() {
@@ -125,6 +125,11 @@ function draw() {
   
 }
 
+function mouseReleased() {
+
+  son.pause();
+  son.loop();
+}
 function lineaRote(a1, ancho, r, g, b) {
   ang1= frameCount*a1*(mouseX*0.009);
   translate(width/2, height/2);
