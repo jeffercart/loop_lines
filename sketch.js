@@ -1,6 +1,6 @@
 let ang1;
 let cen;
-let notas = [21, 23, 25, 29, 34, 39, 42, 46];
+let notas = [23, 25, 29, 34, 39, 42, 46, 49, 52,55];
 let osc, env, son;
 
 function preload() {
@@ -12,7 +12,7 @@ function setup() {
   osc = new p5.Oscillator("sawtooth");
   osc.start();
   osc.amp(env);
-  son.setVolume(0.5);
+  son.setVolume(0.6);
 
 }
 
@@ -103,25 +103,42 @@ function draw() {
     stroke(255);
     strokeWeight(1.5);
     point(width/2, height/2);
-  }pop();
-  
-    if (mouseIsPressed==true && mouseX < width/5) {
+  }
+  pop();
+
+  push();
+    if (mouseIsPressed==true && mouseX < width/5 && mouseY < height/2) {
+    osc.freq(midiToFreq(notas[1]));
+    env.play();
+  } else if (mouseIsPressed==true && mouseX > width/5 && mouseX < 2*width/5 && mouseY < height/2) {
     osc.freq(midiToFreq(notas[2]));
     env.play();
-  } else if (mouseIsPressed==true && mouseX > width/5 && mouseX < 2*width/5) {
+  } else if (mouseIsPressed==true && mouseX > 2*width/5 && mouseX < 3*width/5 && mouseY < height/2) {
     osc.freq(midiToFreq(notas[3]));
     env.play();
-  } else if (mouseIsPressed==true && mouseX > 2*width/5 && mouseX < 3*width/5) {
-    osc.freq(midiToFreq(notas[4]));
-    env.play();
-   } else if (mouseIsPressed==true && mouseX > 3*width/5 && mouseX < 4*width/5) {
-      osc.freq(midiToFreq(notas[5]));
+   } else if (mouseIsPressed==true && mouseX > 3*width/5 && mouseX < 4*width/5 && mouseY < height/2) {
+      osc.freq(midiToFreq(notas[4]));
       env.play();
-  } else if (mouseIsPressed==true && mouseX > 4*width/5) {
+  } else if (mouseIsPressed==true && mouseX > 4*width/5 && mouseY < height/2) {
+    osc.freq(midiToFreq(notas[5]));
+    env.play(); //MITAD      
+  } else if (mouseIsPressed==true && mouseX < width/5 && mouseY > height/2) {
     osc.freq(midiToFreq(notas[6]));
     env.play();
+  } else if (mouseIsPressed==true && mouseX > width/5 && mouseX < 2*width/5 && mouseY > height/2) {
+    osc.freq(midiToFreq(notas[7]));
+    env.play();
+  } else if (mouseIsPressed==true && mouseX > 2*width/5 && mouseX < 3*width/5 && mouseY > height/2) {
+    osc.freq(midiToFreq(notas[8]));
+    env.play();
+   } else if (mouseIsPressed==true && mouseX > 3*width/5 && mouseX < 4*width/5 && mouseY > height/2) {
+      osc.freq(midiToFreq(notas[9]));
+      env.play();
+  } else if (mouseIsPressed==true && mouseX > 4*width/5 && mouseY > height/2) {
+    osc.freq(midiToFreq(notas[10]));
+    env.play();
   }
-  
+pop();
   
 }
 
